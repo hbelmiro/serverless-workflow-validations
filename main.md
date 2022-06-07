@@ -223,24 +223,24 @@
 
 | Description                                          | Implemented |
 |------------------------------------------------------|-------------|
-| `workflowId` is required                             | No          |
-| `invoke` must be `sync` or `async`                   | No          |
-| `onParentComplete` must be `terminate` or `continue` | No          |
+| `workflowId` is required                             | Schema      |
+| `invoke` must be `sync` or `async`                   | Schema      |
+| `onParentComplete` must be `terminate` or `continue` | Schema      |
 
 ## Error Definition
 
-| Description                                       | Implemented |
-|---------------------------------------------------|-------------|
-| `errorRef` or `errorRefs` is required             | No          |
-| `transition` or `end` is required                 | No          |
-| `transition` or `end` should be defined. Not both | No          |
-| `transition` must refer to an existing `state`    | No          |
+| Description                                       | Implemented         |
+|---------------------------------------------------|---------------------|
+| `errorRef` or `errorRefs` is required             | Schema has an error |
+| `transition` or `end` is required                 | Schema has an error |
+| `transition` or `end` should be defined. Not both | Schema has an error |
+| `transition` must refer to an existing `state`    | No                  |
 
 ## Retry Definition
 
 | Description                                             | Implemented |
 |---------------------------------------------------------|-------------|
-| `name` is required                                      | No          |
+| `name` is required                                      | Schema      |
 | `delay` must be in a valid ISO 8601 duration format     | No          |
 | `maxDelay` must be in a valid ISO 8601 duration format  | No          |
 | `increment` must be in a valid ISO 8601 duration format | No          |
@@ -249,7 +249,7 @@
 
 | Description                                   | Implemented |
 |-----------------------------------------------|-------------|
-| `nextState` is required                       | No          |
+| `nextState` is required                       | Schema      |
 | `nextState` must refer to an existing `state` | No          |
 
 ## Start Definition
@@ -263,21 +263,15 @@
 
 | Description                                     | Implemented |
 |-------------------------------------------------|-------------|
-| `interval` is required if `cron` is not defined | No          |
-| `cron` is required if `interval` is not defined | No          |
+| `interval` is required if `cron` is not defined | Schema      |
+| `cron` is required if `interval` is not defined | Schema      |
 
 ## Cron Definition
 
 | Description                                            | Implemented |
 |--------------------------------------------------------|-------------|
-| `expression` is required                               | No          |
+| `expression` is required                               | Schema      |
 | `validUnitl` must be a date and time (ISO 8601 format) | No          |
-
-## ProduceEvent Definition
-
-| Description            | Implemented |
-|------------------------|-------------|
-| `eventRef` is required | No          |
 
 ## Timeout Definition
 
@@ -293,7 +287,7 @@
 
 | Description                                  | Implemented |
 |----------------------------------------------|-------------|
-| `duration` is required                       | No          |
+| `duration` is required                       | Schema      |
 | `duration` must be a valid ISO 8601 duration | No          |
 
 ## End Definition
@@ -308,5 +302,5 @@
 
 | Description                                  | Implemented |
 |----------------------------------------------|-------------|
-| `eventRef` is required                       | No          |
+| `eventRef` is required                       | Schema      |
 | `eventRef` must refer to an existing `event` | No          |
