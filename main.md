@@ -16,8 +16,16 @@
 | `type` is required.                               | Schema            |
 | `transition` is required if `end` is not defined  | No                |
 | `transition` or `end` should be defined. Not both | No                |
-| `transition` must refer to an existing `state`    | No                |
-| `compensatedBy` must refer to an existing `state` | No                |
+| `transition` must refer to an existing `state`    | Yes               |
+| `compensatedBy` must refer to an existing `state` | Yes               |
+
+## OnEvents Definition
+
+| Description                                   | Implemented |
+|-----------------------------------------------|-------------|
+| `eventRefs` is required                       | Schema      |
+| `eventRefs` must refer to an existing `event` | Yes         |
+| `actionMode` must be `sequence` or `parallel` | Schema      |
 
 ### States Referenced by `compensatedBy`
 
@@ -108,7 +116,7 @@
 
 | Description                               | Implemented         |
 |-------------------------------------------|---------------------|
-| `inputCollection` is required             | Schema              |
+| `inputCollection` is required             | Schema and Manual   |
 | `actions` is required                     | Schema has an error |
 | `mode` must be `sequential` or `parallel` | Schema              |
 
@@ -118,7 +126,7 @@
 |----------------------------------------------|-------------|
 | `action` is required                         | No          |
 | `eventRef` is required                       | No          |
-| `eventRef` must refer to an existing `event` | No          |
+| `eventRef` must refer to an existing `event` | Yes         |
 
 ## Function Definition
 
@@ -127,7 +135,7 @@
 | `name` is required                                                                      | Schema      |
 | `operation` is required                                                                 | No          |
 | `type` must be `rest`, `asyncapi`, `rpc`, `graphql`, `odata`, `expression`, or `custom` | Schema      |
-| `authRef` must refer to an existing `auth`                                              | No          |
+| `authRef` must refer to an existing `auth`                                              | Yes         |
 
 ### Operation
 
@@ -185,14 +193,6 @@
 |------------------------------------|-------------|
 | `contextAttributeName` is required | Schema      |
 
-## OnEvents Definition
-
-| Description                                   | Implemented |
-|-----------------------------------------------|-------------|
-| `eventRefs` is required                       | Schema      |
-| `eventRefs` must refer to an existing `event` | No          |
-| `actionMode` must be `sequence` or `parallel` | Schema      |
-
 ## Action Definition
 
 | Description                                                              | Implemented                |
@@ -200,6 +200,15 @@
 | `functionRef` is required if `eventRef` and `subFlowRef` are not defined | Schema OK. Manual Outdated |
 | `eventRef` is required if `functionRef` and `subFlowRef` are not defined | Schema                     |
 | `subFlowRef` is required if `eventRef` and `functionRef` are not defined | Schema                     |
+
+### EventRef Definition
+
+| Description                                              | Implemented |
+|----------------------------------------------------------|-------------|
+| `produceEventRef` is required                            | No          |
+| `produceEventRef` must refer to an existing `event`      | No          |
+| `consumeEventTimeout` must be in a valid ISO 8601 format | No          |
+| `invoke` must be `sync` or `async`                       | No          |
 
 ## FunctionRef Definition
 
@@ -209,15 +218,6 @@
 | `arguments` is required if function type is `graphql`    | No          |
 | `selectionSet` is required if function type is `graphql` | No          |
 | `invoke` must be `sync` or `async`                       | Schema      |
-
-## EventRef Definition
-
-| Description                                              | Implemented |
-|----------------------------------------------------------|-------------|
-| `produceEventRef` is required                            | No          |
-| `produceEventRef` must refer to an existing `event`      | No          |
-| `consumeEventTimeout` must be in a valid ISO 8601 format | No          |
-| `invoke` must be `sync` or `async`                       | No          |
 
 ## SubFlowRef Definition
 
