@@ -140,3 +140,15 @@
   SwitchState-->EventCondition-->Transition;
   SwitchState-->DefaultConditionDefinition-->Transition;
 ```
+
+## EventRef
+```mermaid
+  graph LR;
+  WorkflowModel-->State
+  State-->OperationState-->Action;
+  State-->ForEachState-->Action;
+  State-->CallbackState-->Action;
+  State-->ParallelState-->Branch-->Action;
+  State-->EventState-->OnEvents-->Action;
+  Action-->EventRef;
+```
