@@ -62,21 +62,20 @@
 
 #### Default Condition
 
-| Description                                     | Implemented       |
-|-------------------------------------------------|-------------------|
-| `transition` or `end` is required               | Manual and schema |
-| `transition` must refer to an existing `state`. | Yes               |
+| Description                                     | Implemented |
+|-------------------------------------------------|-------------|
+| `transition` or `end` is required               | Schema      |
+| `transition` must refer to an existing `state`. | Yes         |
 
 #### Event Condition
 
 | Description                                       | Implemented         |
 |---------------------------------------------------|---------------------|
-| Event or workflow timeout is required             | Yes                 |
 | `eventRef` is required                            | Schema              |
 | `eventRef` must refer to an existing `event`      | No                  |
 | `transition` or `end` is required                 | Schema has an error |
 | `transition` or `end` should be defined. Not both | Schema has an error |
-| `transition` must refer to an existing `state`    | No                  |
+| `transition` must refer to an existing `state`    | Yes                 |
 
 ### Sleep State
 
