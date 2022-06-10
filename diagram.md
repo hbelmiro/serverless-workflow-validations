@@ -3,152 +3,190 @@
 ## Full Diagram
 
 ```mermaid
-  graph LR;
-  WorkflowModel-->FunctionDefinition;
-  WorkflowModel-->EventDefinition;
-  WorkflowModel-->RetryDefinition;
-  WorkflowModel-->TimeoutsDefinition;
-  WorkflowModel-->Errors;
-  WorkflowModel-->State;
+  graph LR
+  WorkflowModel-->FunctionDefinition
+  WorkflowModel-->EventDefinition
+  WorkflowModel-->RetryDefinition
+  WorkflowModel-->TimeoutsDefinition
+  WorkflowModel-->Errors
+  WorkflowModel-->State
   
-  EventDefinition-->CorrelationDefinition;
+  EventDefinition-->CorrelationDefinition
   
-  TimeoutsDefinition-->StateExecTimeout;
-  TimeoutsDefinition-->WorkflowExecTimeout;
+  TimeoutsDefinition-->StateExecTimeout
+  TimeoutsDefinition-->WorkflowExecTimeout
   
-  Errors-->ErrorDefinition;
+  Errors-->ErrorDefinition
   
-  State-->End;
-  State-->Error;
+  State-->End
+  State-->Error
   State-->StateDataFilter
-  State-->TimeoutsDefinition;
-  State-->Transition;
+  State-->TimeoutsDefinition
+  State-->Transition
   
-  State-->EventState;
-  State-->OperationState;
-  State-->SwitchState;
-  State-->SleepState;
-  State-->ParallelState;
-  State-->InjectState;
-  State-->ForEachState;
-  State-->CallbackState;
+  State-->EventState
+  State-->OperationState
+  State-->SwitchState
+  State-->SleepState
+  State-->ParallelState
+  State-->InjectState
+  State-->ForEachState
+  State-->CallbackState
   
-  EventState-->OnEvents;
+  EventState-->OnEvents
   
-  OperationState-->Action;
+  OperationState-->Action
   
-  SwitchState-->DataCondition;
-  SwitchState-->DefaultConditionDefinition;
-  SwitchState-->EventCondition;
+  SwitchState-->DataCondition
+  SwitchState-->DefaultConditionDefinition
+  SwitchState-->EventCondition
   
-  ParallelState-->Branch;
+  ParallelState-->Branch
   
-  ForEachState-->Action;
+  ForEachState-->Action
   
-  CallbackState-->Action;
-  CallbackState-->EventDataFilter;
+  CallbackState-->Action
+  CallbackState-->EventDataFilter
   
-  Branch-->Action;
-  Branch-->TimeoutsDefinition;
+  Branch-->Action
+  Branch-->TimeoutsDefinition
   
-  EventCondition-->End;
-  EventCondition-->EventDataFilter;
-  EventCondition-->Transition;
+  EventCondition-->End
+  EventCondition-->EventDataFilter
+  EventCondition-->Transition
   
-  DefaultConditionDefinition-->End;
-  DefaultConditionDefinition-->Transition;
+  DefaultConditionDefinition-->End
+  DefaultConditionDefinition-->Transition
   
-  DataCondition-->End;
-  DataCondition-->Transition;
+  DataCondition-->End
+  DataCondition-->Transition
   
-  OnEvents-->Action;
+  OnEvents-->Action
   OnEvents-->EventDataFilter
   
-  Action-->ActionDataFilter;
-  Action-->EventRef;
-  Action-->FunctionRef;
-  Action-->Sleep;
-  Action-->SubFlowRef;
+  Action-->ActionDataFilter
+  Action-->EventRef
+  Action-->FunctionRef
+  Action-->Sleep
+  Action-->SubFlowRef
   
-  Transition-->ProduceEvent;
+  Transition-->ProduceEvent
   
-  Error-->End;
+  Error-->End
   
-  End-->ContinueAs;
-  End-->ProduceEvent;
+  End-->ContinueAs
+  End-->ProduceEvent
   
-  EndDefinition-->ProduceEvent;
-  EndDefinition-->ContinueAs;
-  
-  ContinueAs-->WorkflowExecTimeout;
+  ContinueAs-->WorkflowExecTimeout
 ```
 
 ## ParallelState
 ```mermaid
-  graph LR;
-  WorkflowModel-->State-->ParallelState;
+  graph LR
+  WorkflowModel-->State-->ParallelState
 ```
 
 ## DataCondition
 
 ```mermaid
-  graph LR;
-  WorkflowModel-->State-->SwitchState-->DataCondition;
+  graph LR
+  WorkflowModel-->State-->SwitchState-->DataCondition
 ```
 
 ## Branch
 ```mermaid
-  graph LR;
-  WorkflowModel-->State-->ParallelState-->Branch;
+  graph LR
+  WorkflowModel-->State-->ParallelState-->Branch
 ```
 
 ## OnEvents
 ```mermaid
-  graph LR;
-  WorkflowModel-->State-->EventState-->OnEvents;
+  graph LR
+  WorkflowModel-->State-->EventState-->OnEvents
 ```
 
 ## Action
 
 ```mermaid
-  graph LR;
+  graph LR
   WorkflowModel-->State
-  State-->OperationState-->Action;
-  State-->ForEachState-->Action;
-  State-->CallbackState-->Action;
-  State-->ParallelState-->Branch-->Action;
-  State-->EventState-->OnEvents-->Action;
+  State-->OperationState-->Action
+  State-->ForEachState-->Action
+  State-->CallbackState-->Action
+  State-->ParallelState-->Branch-->Action
+  State-->EventState-->OnEvents-->Action
 ```
 
 ## EventCondition
 ```mermaid
-  graph LR;
-  WorkflowModel-->State-->SwitchState-->EventCondition;
+  graph LR
+  WorkflowModel-->State-->SwitchState-->EventCondition
 ```
 
 ## DefaultConditionDefinition
 ```mermaid
-  graph LR;
-  WorkflowModel-->State-->SwitchState-->DefaultConditionDefinition;
+  graph LR
+  WorkflowModel-->State-->SwitchState-->DefaultConditionDefinition
 ```
 
 ## Transition
 ```mermaid
-  graph LR;
-  WorkflowModel-->State-->SwitchState-->DataCondition-->Transition;
-  State-->Transition;
-  SwitchState-->EventCondition-->Transition;
-  SwitchState-->DefaultConditionDefinition-->Transition;
+  graph LR
+  WorkflowModel-->State-->SwitchState-->DataCondition-->Transition
+  State-->Transition
+  SwitchState-->EventCondition-->Transition
+  SwitchState-->DefaultConditionDefinition-->Transition
 ```
 
 ## EventRef
 ```mermaid
-  graph LR;
+  graph LR
   WorkflowModel-->State
-  State-->OperationState-->Action;
-  State-->ForEachState-->Action;
-  State-->CallbackState-->Action;
-  State-->ParallelState-->Branch-->Action;
-  State-->EventState-->OnEvents-->Action;
-  Action-->EventRef;
+  State-->OperationState-->Action
+  State-->ForEachState-->Action
+  State-->CallbackState-->Action
+  State-->ParallelState-->Branch-->Action
+  State-->EventState-->OnEvents-->Action
+  Action-->EventRef
+```
+
+## Error
+```mermaid
+  graph LR
+  
+  WorkflowModel-->State-->Error
+```
+
+## End
+```mermaid
+  graph LR
+  
+  WorkflowModel-->State-->End
+  State-->SwitchState-->End
+  SwitchState-->DefaultConditionDefinition-->End
+  SwitchState-->DataCondition-->End
+  State-->Error-->End
+```
+
+## ProduceEvent
+```mermaid
+  graph LR
+  
+  WorkflowModel-->State
+  State-->SwitchState
+  State-->Transition
+  State-->End
+  State-->Error
+  SwitchState-->DataCondition
+  SwitchState-->DefaultConditionDefinition
+  SwitchState-->End
+  SwitchState-->EventCondition
+  Transition-->ProduceEvent
+  DefaultConditionDefinition-->Transition
+  DefaultConditionDefinition-->End
+  EventCondition-->Transition
+  DataCondition-->Transition
+  DataCondition-->End
+  Error-->End
+  End-->ProduceEvent
 ```
