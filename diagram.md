@@ -161,11 +161,15 @@
 ```mermaid
   graph LR
   
-  WorkflowModel-->State-->End
-  State-->SwitchState-->End
-  SwitchState-->DefaultConditionDefinition-->End
-  SwitchState-->DataCondition-->End
-  State-->Error-->End
+  WorkflowModel-->State
+  State-->End
+  State-->SwitchState
+  State-->Error
+  SwitchState-->DefaultConditionDefinition
+  SwitchState-->DataCondition
+  DefaultConditionDefinition-->End
+  DataCondition-->End
+  Error-->End
 ```
 
 ## ProduceEvent
@@ -179,7 +183,6 @@
   State-->Error
   SwitchState-->DataCondition
   SwitchState-->DefaultConditionDefinition
-  SwitchState-->End
   SwitchState-->EventCondition
   Transition-->ProduceEvent
   DefaultConditionDefinition-->Transition
