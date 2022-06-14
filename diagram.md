@@ -10,6 +10,11 @@
   WorkflowModel-->TimeoutsDefinition
   WorkflowModel-->Errors
   WorkflowModel-->State
+  WorkflowModel-->Start
+  
+  Start-->Schedule
+  
+  Schedule-->Cron
   
   EventDefinition-->CorrelationDefinition
   

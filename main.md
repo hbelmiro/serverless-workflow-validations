@@ -72,7 +72,7 @@
 | Description                                       | Implemented         |
 |---------------------------------------------------|---------------------|
 | `eventRef` is required                            | Schema              |
-| `eventRef` must refer to an existing `event`      | No                  |
+| `eventRef` must refer to an existing `event`      | Yes                 |
 | `transition` or `end` is required                 | Schema has an error |
 | `transition` or `end` should be defined. Not both | Schema has an error |
 | `transition` must refer to an existing `state`    | Yes                 |
@@ -233,7 +233,7 @@
 | `errorRef` or `errorRefs` is required             | Schema has an error |
 | `transition` or `end` is required                 | Schema has an error |
 | `transition` or `end` should be defined. Not both | Schema has an error |
-| `transition` must refer to an existing `state`    | No                  |
+| `transition` must refer to an existing `state`    | Yes                 |
 
 ## Retry Definition
 
@@ -255,7 +255,7 @@
 
 | Description                                   | Implemented |
 |-----------------------------------------------|-------------|
-| `stateName` must refer to an existing `state` | No          |
+| `stateName` must refer to an existing `state` | Yes         |
 | `schedule` is required                        | No          |
 
 ## Schedule Definition
@@ -302,4 +302,4 @@
 | Description                                  | Implemented |
 |----------------------------------------------|-------------|
 | `eventRef` is required                       | Schema      |
-| `eventRef` must refer to an existing `event` | No          |
+| `eventRef` must refer to an existing `event` | Yes         |
