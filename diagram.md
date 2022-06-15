@@ -115,11 +115,25 @@
 ```mermaid
   graph LR
   WorkflowModel-->State
-  State-->OperationState-->Action
-  State-->ForEachState-->Action
-  State-->CallbackState-->Action
-  State-->ParallelState-->Branch-->Action
-  State-->EventState-->OnEvents-->Action
+  State-->OperationState
+  State-->ForEachState
+  State-->CallbackState
+  State-->ParallelState
+  State-->EventState
+  
+  OperationState-->Action
+  
+  ForEachState-->Action
+  
+  CallbackState-->Action
+  
+  Branch-->Action
+  
+  ParallelState-->Branch
+  
+  OnEvents-->Action
+  
+  EventState-->OnEvents
 ```
 
 ## EventCondition
@@ -197,4 +211,32 @@
   DataCondition-->End
   Error-->End
   End-->ProduceEvent
+```
+
+## FunctionRef
+```mermaid
+  graph LR
+  
+  WorkflowModel-->State
+  State-->OperationState
+  State-->ForEachState
+  State-->CallbackState
+  State-->ParallelState
+  State-->EventState
+  
+  OperationState-->Action
+  
+  ForEachState-->Action
+  
+  CallbackState-->Action
+  
+  Branch-->Action
+  
+  ParallelState-->Branch
+  
+  OnEvents-->Action
+  
+  EventState-->OnEvents
+
+  Action-->FunctionRef
 ```

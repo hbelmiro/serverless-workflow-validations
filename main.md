@@ -214,6 +214,7 @@
 | Description                                              | Implemented |
 |----------------------------------------------------------|-------------|
 | `refName` is required                                    | Schema      |
+| `refName` must refer to an existing `function`           | No          |
 | `arguments` is required if function type is `graphql`    | No          |
 | `selectionSet` is required if function type is `graphql` | No          |
 | `invoke` must be `sync` or `async`                       | Schema      |
