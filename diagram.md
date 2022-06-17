@@ -4,13 +4,30 @@
 
 ```mermaid
   graph LR
-  WorkflowModel-->FunctionDefinition
-  WorkflowModel-->EventDefinition
-  WorkflowModel-->RetryDefinition
-  WorkflowModel-->TimeoutsDefinition
+  WorkflowModel-->Auth
+  WorkflowModel-->Constants
+  WorkflowModel-->DataInputSchema
   WorkflowModel-->Errors
-  WorkflowModel-->State
+  WorkflowModel-->Events
+  WorkflowModel-->Extension
+  WorkflowModel-->Functions
+  WorkflowModel-->Retries
+  WorkflowModel-->Secrets
   WorkflowModel-->Start
+  WorkflowModel-->State
+  WorkflowModel-->TimeoutsDefinition
+  
+  Auth-->AuthDefinition
+  
+  AuthDefinition-->BasicAuthDefinition
+  AuthDefinition-->BearerAuthDefinition
+  AuthDefinition-->OauthDefinition
+ 
+  Functions-->FunctionDefinition
+  
+  Events-->EventDefinition
+  
+  Retries-->RetryDefinition
   
   Start-->Schedule
   
@@ -83,6 +100,27 @@
   End-->ProduceEvent
   
   ContinueAs-->WorkflowExecTimeout
+```
+
+## WorkflowModel
+
+```mermaid
+  graph TD
+  
+  WorkflowModel-->Auth
+  WorkflowModel-->Constants
+  WorkflowModel-->DataInputSchema
+  WorkflowModel-->Events
+  WorkflowModel-->Extension
+  WorkflowModel-->Functions
+  WorkflowModel-->Retries
+  WorkflowModel-->Secrets
+  
+  WorkflowModel-->RetryDefinition
+  WorkflowModel-->TimeoutsDefinition
+  WorkflowModel-->Errors
+  WorkflowModel-->State
+  WorkflowModel-->Start
 ```
 
 ## ParallelState
